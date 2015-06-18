@@ -1,0 +1,36 @@
+#!/bin/bash
+if (( $# == 0 )); then
+	echo "Showing some help:"
+	echo ""
+	echo "\$1 is the file you want to (DELETE and) create and \`chmod +x\`"
+	echo "    It will be then opened in \$EDITOR (current value is: '$EDITOR')"
+	echo "\$2 is an optinal reference. Put it if you want the file to be shbanged as '#!/usr/bin/\$2'"
+	exit 1
+fi
+if [ ! -e "$1" ]; then
+	if (( $# == 1 )); then
+		_pp='bash'
+		if   [ 1 -eq $(echo "$1" | egrep -c ".*\.p(l|m)") ]; then
+			_pp='perl'
+		elif [ 1 -eq $(echo "$1" | egrep -c ".*\.p6(m)?") ]; then
+			_pp='perl6'
+		elif [ 1 -eq $(echo "$1" | egrep -c ".*\.py") ]; then
+			_pp='env python'
+		elif [ 1 -eq $(echo "$1" | egrep -c ".*\.zsh") ]; then
+			_pp='zsh'
+		elif [ 1 -eq $(echo "$1" | egrep -c ".*\.awk") ]; then
+			_pp='awk -f'
+		#Base:
+		#elif [ 1 -eq $(echo "$1" | egrep -c ".*\.") ]; then
+		#	_pp=''
+		fi
+		echo "#!/usr/bin/$_pp" > $1
+	else
+		echo "#!/usr/bin/$2" > $1
+	fi
+	chmod +x $1
+	$EDITOR $1
+else
+	chmod +x $1
+	./$1
+fi
