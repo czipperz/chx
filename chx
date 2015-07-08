@@ -40,6 +40,7 @@ if [ ! -e "$1" ]; then
 	    exit 0
 	elif [ 1 -eq "$(echo "$1" | egrep -c ".*\.(c|cpp|ml|mli)")" ]; then
 	    $EDITOR $1
+	    exit 0
 	    
 	    #Base:
 	    #elif [ 1 -eq $(echo "$1" | egrep -c ".*\.") ]; then
