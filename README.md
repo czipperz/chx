@@ -1,5 +1,11 @@
 #CHX
 
+This is the best way to make programming boilerplate.
+
+There are two modes, which are automatically detected: "scripting" and "programming". They are detailed below.
+
+##Scripting
+
 This is the best way to make and execute scripting files.
 
 If the script is non existant, it will create it, attempting to do so smartly, then will open it in `$EDITOR`.
@@ -30,3 +36,29 @@ Supported file extensions:
 * `.py` - `#!/usr/bin/env python`
 * `.zsh` - `#!/usr/bin/zsh`
 * anything else - `#!/usr/bin/bash`
+
+
+##Programming
+
+This is the best way to create programming boiler plate and to compile it later.
+
+If the file is non existant, it will attempt to create some boiler plate code, then will open it in your editor.
+
+If the file does exist, it will be compiled.
+
+Examples:
+
+    $ chx header.h     # then immediately exit $EDITOR
+    $ cat header.h
+	#ifndef HEADER_H
+	#define HEADER_H
+
+    #endif
+    $ chx java.java    # then immediately exit $EDITOR
+	$ cat java.java
+	public class java {
+        
+    }
+    $ chx java.java
+	$ ls
+	header.h java.java java.class
