@@ -22,9 +22,9 @@ Examples:
 	asdf
 
 Supported file extensions:
-* awk - `.awk`.
-* perl - `.pl` or `.pm`.
-* perl6 - `.p6` or `.p6m`.
-* python - `.py`.
-* zsh - `.zsh`.
-* bash - anything else.
+* `.awk` - `#!/usr/bin/awk`
+* `.pl` or `.pm` - `#!/usr/bin/perl`
+* `.p6` or `.p6m` - `#!/usr/bin/perl6`
+* `.py` - `#!/usr/bin/env python`
+* `.zsh` - `#!/usr/bin/zsh`
+* anything else - `#!/usr/bin/bash`
