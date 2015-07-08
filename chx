@@ -52,10 +52,10 @@ if [ ! -e "$1" ]; then
     chmod +x $1
     $EDITOR $1
 else
-    if   [ 1 -eq $(echo "$1" | egrep -c ".*\.h(pp)?") ]; then echo "Don't know how to compile header files"
-    elif [ 1 -eq $(echo "$1" | egrep -c ".*\.c") ];      then gcc -c $1
-    elif [ 1 -eq $(echo "$1" | egrep -c ".*\.cpp") ];    then g++ -c $1
-    elif [ 1 -eq $(echo "$1" | egrep -c ".*\.java") ];   then javac $1
+    if   [ 1 -eq "$(echo "$1" | egrep -c ".*\.h(pp)?")" ]; then echo "Don't know how to compile header files"
+    elif [ 1 -eq "$(echo "$1" | egrep -c ".*\.c")" ];      then gcc -c $1
+    elif [ 1 -eq "$(echo "$1" | egrep -c ".*\.cpp")" ];    then g++ -c $1
+    elif [ 1 -eq "$(echo "$1" | egrep -c ".*\.java")" ];   then javac $1
     else
 	chmod +x $1
 	./$1
