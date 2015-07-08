@@ -25,18 +25,18 @@ if [ ! -e "$1" ]; then
 	elif [ 1 -eq "$(echo "$1" | egrep -c ".*\.awk")" ]; then
 	    _pp='awk -f'
 	elif [ 1 -eq "$(echo "$1" | egrep -c ".*\.java")" ]; then
-	    echo "public class $(echo "$1" | perl -pe 's/(.*?\/)*(.*?)\.java/$2/') {
-    
-}" > $1
+	    echo "public class $(echo "$1" | perl -pe 's/(.*?\/)*(.*?)\.java/$2/') {" > $1
+	    echo "    "                                                               > $1
+	    echo "}"                                                                  > $1
 	    chmod +x $1
 	    $EDITOR $1
 	    exit 0
 	elif [ 1 -eq "$(echo "$1" | egrep -c ".*\.h(pp)?")" ]; then
 	    name="$(echo "$1" | perl -pe 's/(.*?\/)*(.*?)\.h(pp)?/$2/' | tr '[a-z]' '[A-Z]')"
-	    echo "#ifndef ${name}_H
-#define ${name}_H
-
-#endif" > $1
+	    echo "#ifndef ${name}_H" > $1
+	    echo "#define ${name}_H" > $1
+	    echo ""                  > $1
+	    echo "#endif"            > $1
 	    chmod +x $1
 	    $EDITOR $1
 	    exit 0
