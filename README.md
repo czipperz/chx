@@ -64,11 +64,11 @@ Examples:
 	header.h java.java java.class
 
 Supported compile time file extensions:
-* `.c` - gcc -c
-* `.cpp` - g++ -c
-* `.hs` - ghc -c
-* `.java` - javac
-* `.ml` or `mli` - ocaml
+* `.c` - `gcc -c $filename`
+* `.cpp` - `g++ -c $filename`
+* `.hs` - `ghc -c $filename`
+* `.java` - `javac $filename`
+* `.ml` or `mli` - `ocaml $filename`
 
 Supported boiler plate extensions:
 * `.java` - generates a class with the same name
