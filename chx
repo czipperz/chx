@@ -14,7 +14,9 @@ fi
 if [ ! -e "$1" ]; then
     if (( $# == 1 )); then
 	_pp='bash'
-	if   [ 1 -eq "$(echo "$1" | egrep -c ".*\.p(l|m)")" ]; then
+	if   [ 1 -eq "$(echo "$1" | egrep -c ".*\.awk")" ]; then
+	    _pp='awk -f'
+	elif [ 1 -eq "$(echo "$1" | egrep -c ".*\.p(l|m)")" ]; then
 	    _pp='perl'
 	elif [ 1 -eq "$(echo "$1" | egrep -c ".*\.p6(m)?")" ]; then
 	    _pp='perl6'
@@ -22,8 +24,6 @@ if [ ! -e "$1" ]; then
 	    _pp='env python'
 	elif [ 1 -eq "$(echo "$1" | egrep -c ".*\.zsh")" ]; then
 	    _pp='zsh'
-	elif [ 1 -eq "$(echo "$1" | egrep -c ".*\.awk")" ]; then
-	    _pp='awk -f'
 	elif [ 1 -eq "$(echo "$1" | egrep -c ".*\.java")" ]; then
 	    echo "public class $(echo "$1" | perl -pe 's/(.*?\/)*(.*?)\.java/$2/') {" > $1
 	    echo "    "                                                               > $1
