@@ -2,7 +2,9 @@
 
 This is the best way to make and execute scripting files.
 
-If the script is non existant, it will create it, attempting to do so smartly. Otherwise it will make it executable and run it.
+If the script is non existant, it will create it, attempting to do so smartly, then will open it in `$EDITOR`.
+
+If the script does exist, it will make it executable and run it.
 
 Examples:
 
