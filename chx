@@ -28,7 +28,6 @@ if [ ! -e "$1" ]; then
 	    echo "public class $(echo "$1" | perl -pe 's/(.*?\/)*(.*?)\.java/$2/') {" > $1
 	    echo "    "                                                               > $1
 	    echo "}"                                                                  > $1
-	    chmod +x $1
 	    $EDITOR $1
 	    exit 0
 	elif [ 1 -eq "$(echo "$1" | egrep -c ".*\.h(pp)?")" ]; then
@@ -37,7 +36,6 @@ if [ ! -e "$1" ]; then
 	    echo "#define ${name}_H" > $1
 	    echo ""                  > $1
 	    echo "#endif"            > $1
-	    chmod +x $1
 	    $EDITOR $1
 	    exit 0
 	    
