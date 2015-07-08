@@ -2,9 +2,13 @@
 if (( $# == 0 )); then
     echo "Showing some help:"
     echo ""
-    echo "\$1 is the file you want to (DELETE and) create and \`chmod +x\`"
-    echo "    It will be then opened in \$EDITOR (current value is: '$EDITOR')"
-    echo "\$2 is an optinal reference. Put it if you want the file to be shbanged as '#!/usr/bin/\$2'"
+    echo "The following rules apply when a scripting language is found:"
+    echo " * \$1 is the file you want to (DELETE and) create and \`chmod +x\`"
+    echo "   It will be then opened in \$EDITOR (current value is: '$EDITOR')"
+    echo " * \$2 is an optinal reference. Put it if you want the file to be shbanged as '#!/usr/bin/\$2'"
+    echo "The following rules apply when a programming language is found:"
+    echo " * \$1 should be the file name, a basic structure will be made if it does not exist."
+    echo "   If \$1 exists, it will be compiled"
     exit 1
 fi
 if [ ! -e "$1" ]; then
