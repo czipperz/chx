@@ -56,6 +56,7 @@ else
     elif [ 1 -eq "$(echo "$1" | egrep -c ".*\.c")" ];      then gcc -c $1
     elif [ 1 -eq "$(echo "$1" | egrep -c ".*\.cpp")" ];    then g++ -c $1
     elif [ 1 -eq "$(echo "$1" | egrep -c ".*\.java")" ];   then javac $1
+    elif [ 1 -eq "$(echo "$1" | egrep -c ".*\.hs")" ];     then ghc -c $1
     else
 	chmod +x $1
 	./$1
