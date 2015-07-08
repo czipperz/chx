@@ -8,7 +8,7 @@ Examples:
 
 	$ ls -A | awk '{ print $1, $9 }'
 	-rw-r--r-- fileOne
-	$ chx newFile.pl     # then exit $EDITOR
+	$ chx newFile.pl     # then immediately exit $EDITOR
 	$ echo 'print "hi"' >> newFile.pl
 	$ chx newFile.pl
 	hi
