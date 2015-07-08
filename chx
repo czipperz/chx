@@ -57,6 +57,12 @@ else
     elif [ 1 -eq "$(echo "$1" | egrep -c ".*\.cpp")" ];    then g++ -c $1
     elif [ 1 -eq "$(echo "$1" | egrep -c ".*\.java")" ];   then javac $1
     elif [ 1 -eq "$(echo "$1" | egrep -c ".*\.hs")" ];     then ghc -c $1
+    elif [ 1 -eq "$(echo "$1" | egrep -c ".*\.ml")" ];     then
+	echo "ml files are assumed to be OCaml files (compile after .mli files)"
+	ocamlopt -c $1
+    elif [ 1 -eq "$(echo "$1" | egrep -c ".*\.mli")" ];    then
+	echo "ml files are assumed to be OCaml files (compile before .ml files)"
+	ocamlc -c $1
     else
 	chmod +x $1
 	./$1
