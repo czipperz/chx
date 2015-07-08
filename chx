@@ -20,6 +20,23 @@ if [ ! -e "$1" ]; then
 	    _pp='zsh'
 	elif [ 1 -eq $(echo "$1" | egrep -c ".*\.awk") ]; then
 	    _pp='awk -f'
+	elif [ 1 -eq $(echo "$1" | egrep -c ".*\.java") ]; then
+	    echo "public class $(echo "$1" | perl -pe 's/(.*?\/)*(.*?)\.java/$2/') {
+    
+}" > $1
+	    chmod +x $1
+	    $EDITOR $1
+	    exit 0
+	elif [ 1 -eq $(echo "$1" | egrep -c ".*\.h(pp)?") ]; then
+	    name="$(echo "$1" | perl -pe 's/(.*?\/)*(.*?)\.h(pp)?/$2/' | tr '[a-z]' '[A-Z]')"
+	    echo "#ifndef $name_H
+#define $name_H
+
+#endif" > $1
+	    chmod +x $1
+	    $EDITOR $1
+	    exit 0
+	    
 	    #Base:
 	    #elif [ 1 -eq $(echo "$1" | egrep -c ".*\.") ]; then
 	    #	_pp=''
@@ -31,6 +48,10 @@ if [ ! -e "$1" ]; then
     chmod +x $1
     $EDITOR $1
 else
-    chmod +x $1
-    ./$1
+    if   [ 1 -eq $(echo "$1" | egrep -c ".*\.h(pp)?") ]; then $EDITOR $1
+    elif [ 1 -eq $(echo "$1" | egrep -c ".*\.java") ]; then javac $1
+    else
+	chmod +x $1
+	./$1
+    fi
 fi
