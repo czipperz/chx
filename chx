@@ -46,9 +46,9 @@ if [ ! -e "$1" ]; then
 	    #elif [ 1 -eq $(echo "$1" | egrep -c ".*\.") ]; then
 	    #	_pp=''
 	fi
-	echo "#!/usr/bin/$_pp" > $1
+	echo "#!/bin/$_pp" > $1
     else
-	echo "#!/usr/bin/$2" > $1
+	echo "#!/bin/$2" > $1
     fi
     chmod +x $1
     $EDITOR $1
