@@ -20,6 +20,8 @@ Examples:
 	$ echo 'print "hi"' >> newFile.pl
 	$ chx newFile.pl
 	hi
+	$ ./newFile.pl
+	hi
 	$ cat fileOne
 	echo 'asdf'
 	$ ./fileOne
