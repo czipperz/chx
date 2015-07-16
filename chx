@@ -31,7 +31,7 @@ if [ ! -e "$1" ]; then
 	    $EDITOR $1
 	    exit 0
 	elif [ 1 -eq "$(echo "$1" | egrep -c ".*\.h(pp)?")" ]; then
-	    name="$(echo "$1" | perl -pe 's/(.*?\/)*(.*?)\.h(pp)?/$2/' | tr '[a-z]' '[A-Z]')"
+	    name="$(echo "$1" | perl -pe 's/(.*?\/)*(.*?)\.h(pp)?/$2/' | perl -pe 's/([a-z])([A-Z])/$1_$2/g' | tr '[a-z]' '[A-Z]' | tr - _)"
 	    echo "#ifndef ${name}_H" >  $1
 	    echo "#define ${name}_H" >> $1
 	    echo ""                  >> $1
