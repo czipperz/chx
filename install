@@ -1,2 +1,2 @@
-#!/usr/bin/bash
+#!/bin/bash
 sudo cp chx /usr/bin
